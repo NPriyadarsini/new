@@ -1,32 +1,41 @@
 import { rndBetween } from '@laufire/utils/lib';
-const ten = 10;
+import ChartManager from '../services/chartManager';
+const minimumInput = 1;
+const maximumInput = 1000;
 const hundred = 100;
+const divider = maximumInput / hundred;
+const multiplier = 8;
+const subjects = [
+	{
+		subjectName: 'Science',
+		passedCount: rndBetween(minimumInput, maximumInput),
+	},
+	{
+		subjectName: 'English',
+		passedCount: rndBetween(minimumInput, maximumInput),
+	},
+	{
+		subjectName: 'History',
+		passedCount: rndBetween(minimumInput, maximumInput),
+	},
+	{
+		subjectName: 'Maths',
+		passedCount: rndBetween(minimumInput, maximumInput),
+	},
+	{
+		subjectName: 'Music',
+		passedCount: rndBetween(minimumInput, maximumInput),
+	},
+];
+const maxLabelWidth = ChartManager.getMaxLabelLength(subjects);
+const maxBarColumnWidth = (maximumInput / divider) - maxLabelWidth;
 
 const config = {
-	subjects: [
-		{
-			subjectName: 'Science',
-			passedCount: rndBetween(ten, hundred),
-		},
-		{
-			subjectName: 'English',
-			passedCount: rndBetween(ten, hundred),
-		},
-		{
-			subjectName: 'History',
-			passedCount: rndBetween(ten, hundred),
-		},
-		{
-			subjectName: 'Maths',
-			passedCount: rndBetween(ten, hundred),
-		},
-		{
-			subjectName: 'Music',
-			passedCount: 100,
-		},
-	],
-	multiplier: 3,
-	divider: 0.8,
+	subjects,
+	multiplier,
+	maxLabelWidth,
+	maxBarColumnWidth,
+	maximumInput,
 };
 
 export default config;

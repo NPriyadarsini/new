@@ -1,10 +1,10 @@
 import { React } from 'react';
 import './App.scss';
-import BarChart from './components/BarChart';
+import HorizontalBarChart from './components/index';
 
 const App = (context) =>
 	<div className="App">
-		<BarChart { ...context }/>
+		<HorizontalBarChart { ...context }/>
 	</div>;
 
 export default App;

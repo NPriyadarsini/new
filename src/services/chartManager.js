@@ -1,19 +1,23 @@
+
 const ChartManager = {
+	getMaxLabelLength: (subjects) =>
+		subjects.reduce((acc, { subjectName }) =>
+			(acc < subjectName.length
+				? subjectName.length
+				: acc)
+		, 0),
+
 	getStyle: (context) => {
-		const { data: { subject, index },
-			config: { multiplier, divider }} = context;
-		const { passedCount } = subject;
+		const { config, data } = context;
+		const { maxBarColumnWidth, maximumInput } = config;
+		const { subject: { passedCount }} = data;
+		// eslint-disable-next-line max-len
+		const width = (passedCount * maxBarColumnWidth) / maximumInput;
 
 		return (
 			{
 				barStyle: {
-					'height': '10%',
-					'width': `${ passedCount * divider }%`,
-					'margin-top': `${ index * multiplier }%`,
-				},
-				labelStyle: {
-					'height': '10%',
-					'margin-top': `${ (index * multiplier) + 1 }%`,
+					width: `${ width }%`,
 				},
 			}
 		);
