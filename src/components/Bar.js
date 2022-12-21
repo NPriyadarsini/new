@@ -1,15 +1,17 @@
 import { React } from 'react';
-import ChartManager from '../services/chartManager';
+import ChartManager from '../services/ChartManager';
 
 const Bar = (context) => {
 	const { data: { subject }} = context;
 	const { passedCount } = subject;
-	const { barStyle } = ChartManager.getStyle(context);
+	const width = ChartManager.getDimension(context);
 
 	return (
 		<div
 			className="bar"
-			style={ barStyle }
+			style={ {
+				width: `${ width }%`,
+			} }
 		>{passedCount}</div>
 	);
 };

@@ -7,21 +7,15 @@ const ChartManager = {
 				: acc)
 		, 0),
 
-	getStyle: (context) => {
+	getDimension: (context) => {
 		const { config, data } = context;
 		const { maxBarColumnWidth, maximumInput } = config;
 		const { subject: { passedCount }} = data;
-		// eslint-disable-next-line max-len
 		const width = (passedCount * maxBarColumnWidth) / maximumInput;
 
-		return (
-			{
-				barStyle: {
-					width: `${ width }%`,
-				},
-			}
-		);
+		return width;
 	},
+
 };
 
 export default ChartManager;

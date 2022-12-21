@@ -1,5 +1,5 @@
 import { rndBetween } from '@laufire/utils/lib';
-import ChartManager from '../services/chartManager';
+import ChartManager from '../services/ChartManager';
 const minimumInput = 1;
 const maximumInput = 1000;
 const hundred = 100;
@@ -24,11 +24,11 @@ const subjects = [
 	},
 	{
 		subjectName: 'Music',
-		passedCount: rndBetween(minimumInput, maximumInput),
+		passedCount: 1000,
 	},
 ];
 const maxLabelWidth = ChartManager.getMaxLabelLength(subjects);
-const maxBarColumnWidth = (maximumInput / divider) - maxLabelWidth;
+const maxBarColumnWidth = maximumInput / divider;
 
 const config = {
 	subjects,
